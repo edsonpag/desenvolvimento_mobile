@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     home: Scaffold(
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: Color.fromRGBO(78, 78, 78, 1),
       appBar: AppBar(
         title: const Text("Sou Rico"),
-        backgroundColor: Colors.blueGrey[900],
+        backgroundColor: Color.fromRGBO(38, 38, 38, 1),
       ),
       body: const Center(
         child: Image(
