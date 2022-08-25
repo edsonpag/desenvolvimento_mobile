@@ -13,36 +13,57 @@ class BusinessCard extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.teal,
         body: SafeArea(
-          child: Row(
-            verticalDirection: VerticalDirection.down,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                color: Colors.red,
-                width: 100.0,
-                height: double.infinity,
-                margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
+              CircleAvatar(
+                radius: 50.0,
+                backgroundImage: AssetImage("images/avatar.jpg"),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    color: Colors.yellow,
-                    width: 100.0,
-                    height: 100.0,
-                  ),
-                  Container(
-                    color: Colors.green,
-                    width: 100.0,
-                    height: 100.0,
-                  ),
-                ],
+              Text("Edson Pagani",
+                style: TextStyle(
+                  fontSize: 40.0,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "Pacifico",
+                ),
               ),
-              Container(
-                color: Colors.blue,
-                width: 100.0,
-                height: double.infinity,
-                margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
+              Text("ENGENHEIRO DE SOFTWARE",
+                style: TextStyle(
+                  color: Colors.teal[100],
+                  fontSize: 20.0,
+                  fontFamily: "Source Sans Pro"
+                ),),
+              SizedBox(
+                height: 20.0,
+                child: Divider(
+                  color: Colors.white,
+                ),
+                width: 150.0,
+              ),
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.phone, color: Colors.teal[900],
+                  ),
+                  title: Text("47 99999-9999",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.teal[900],
+                    fontFamily: "Source Sans Pro"
+                  ),),
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.email, color: Colors.teal[900],
+                  ),
+                  title: Text("edsonpagani@gmail.com",
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.teal[900],
+                        fontFamily: "Source Sans Pro"
+                    ),),
+                ),
               ),
             ]
           )
