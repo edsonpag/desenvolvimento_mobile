@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:super_quiz/QuizBrain.dart';
+import 'package:super_quiz/question.dart';
 
 void main() {
   runApp(const SuperQuiz());
@@ -7,11 +8,15 @@ void main() {
 
 class SuperQuiz extends StatefulWidget {
   const SuperQuiz({Key? key}) : super(key: key);
+
   @override
   State<SuperQuiz> createState() => _SuperQuizState();
 }
 
 class _SuperQuizState extends State<SuperQuiz> {
+  List<Icon> score = [];
+  QuizBrain quizBrain = QuizBrain();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,15 +29,15 @@ class _SuperQuizState extends State<SuperQuiz> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const Expanded(
+                Expanded(
                   flex: 5,
                   child: Padding(
                     padding: EdgeInsets.all(10.0),
                     child: Center(
                       child: Text(
-                        'Aqui vem a pergunta.',
+                        quizBrain.getQuestionText(),
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 25.0,
                           color: Colors.white,
                         ),
@@ -47,7 +52,9 @@ class _SuperQuizState extends State<SuperQuiz> {
                       style: TextButton.styleFrom(
                         backgroundColor: Colors.green,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        checkAnswer(true);
+                      },
                       child: const Text(
                         'Sim',
                         style: TextStyle(
@@ -65,7 +72,9 @@ class _SuperQuizState extends State<SuperQuiz> {
                       style: TextButton.styleFrom(
                         backgroundColor: Colors.red,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        checkAnswer(false);
+                      },
                       child: const Text(
                         'Não',
                         style: TextStyle(
@@ -76,11 +85,25 @@ class _SuperQuizState extends State<SuperQuiz> {
                     ),
                   ),
                 ),
+                Row(
+                  children: score,
+                ),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  void checkAnswer(bool userAnswer) {
+    setState(() {
+      if(quizBrain.getQuestionAnswer() == userAnswer) {
+        score.add(Icon(Icons.check, color: Colors.green,));
+      } else {
+        score.add(Icon(Icons.close, color: Colors.red,));
+      }
+      quizBrain.nextQuestion();
+    });
   }
 }
