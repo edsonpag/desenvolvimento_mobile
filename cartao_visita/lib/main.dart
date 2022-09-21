@@ -16,11 +16,11 @@ class BusinessCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 50.0,
                 backgroundImage: AssetImage("images/avatar.jpg"),
               ),
-              Text("Edson Pagani",
+              const Text("Edson Pagani",
                 style: TextStyle(
                   fontSize: 40.0,
                   color: Colors.white,
